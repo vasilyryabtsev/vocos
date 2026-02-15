@@ -4,7 +4,7 @@ defaults:
   - metrics: empty_metrics
   - datasets: ruslan_onebatchtest
   - dataloader: example
-  - transforms.instance_transforms: vocos
+  - transforms: vocos
   - _self_
 
 # Generator optimizer
