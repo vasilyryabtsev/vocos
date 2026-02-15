@@ -1,0 +1,67 @@
+defaults:
+  - model: vocos
+  - writer: cometml
+  - metrics: empty_metrics
+  - datasets: ruslan_onebatchtest
+  - dataloader: example
+  - transforms.instance_transforms: vocos
+  - _self_
+
+# Generator optimizer
+optimizer:
+  _target_: torch.optim.AdamW
+  lr: 2e-4
+  betas: [0.9, 0.999]
+
+lr_scheduler:
+  _target_: torch.optim.lr_scheduler.CosineAnnealingLR
+  T_max: 100
+  eta_min: 1e-6
+
+# Discriminator optimizer
+optimizer_d:
+  _target_: torch.optim.AdamW
+  lr: 2e-4
+  betas: [0.9, 0.999]
+
+lr_scheduler_d:
+  _target_: torch.optim.lr_scheduler.CosineAnnealingLR
+  T_max: 100
+  eta_min: 1e-6
+
+# Loss
+loss_function:
+  _target_: src.loss.MelSpecReconstructionLoss
+  sample_rate: 22050
+  n_fft: 1024
+  hop_length: 256
+  n_mels: 80
+
+# Discriminators
+discriminator_mpd:
+  _target_: src.model.MultiPeriodDiscriminator
+  periods: [2, 3, 5, 7, 11]
+
+discriminator_mrd:
+  _target_: src.model.MultiResolutionDiscriminator
+  fft_sizes: [2048, 1024, 512]
+
+# Trainer
+trainer:
+  trainer_class: VocosTrainer
+  mel_loss_coeff: 45.0
+  feat_loss_coeff: 2.0
+  log_step: 1
+  n_epochs: 10
+  epoch_len: 5
+  device_tensors: ["spectrogram", "audio"]
+  resume_from: null
+  device: auto
+  override: False
+  monitor: "off"
+  save_period: 100
+  early_stop: 100
+  save_dir: "saved"
+  seed: 1
+  max_grad_norm: 10.0
+  skip_oom: true

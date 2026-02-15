@@ -1,0 +1,13 @@
+_target_: src.logger.WandBWriter
+project_name: "vocos_project"
+entity: null
+run_name: "onebatch_test"
+mode: "online"
+loss_names:
+    - loss
+    - mel_loss
+    - gen_loss
+    - disc_loss
+    - feat_loss
+log_checkpoints: False # set to True if you want to log save_dir with checkpoints to W&B
+id_length: 8 # length of the run_id

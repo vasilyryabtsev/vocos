@@ -1,0 +1,14 @@
+_target_: src.model.VocosModel
+
+backbone:
+  _target_: src.model.VocosResNetBackbone
+  input_channels: 128  # n_mels from MelSpectrogram transform
+  dim: 512
+  num_blocks: 8
+
+head:
+  _target_: src.model.ISTFTHead
+  dim: 512
+  n_fft: 1024
+  hop_length: 256
+  padding: "same"

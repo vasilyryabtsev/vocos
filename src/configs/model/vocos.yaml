@@ -1,0 +1,13 @@
+_target_: src.model.VocosModel
+backbone:
+  _target_: src.model.VocosBackbone
+  input_channels: 80  # must match n_mels in loss_function and transforms
+  dim: 512
+  intermediate_dim: 1536
+  num_layers: 8
+head:
+  _target_: src.model.ISTFTHead
+  dim: 512
+  n_fft: 1024
+  hop_length: 256
+  padding: "center"

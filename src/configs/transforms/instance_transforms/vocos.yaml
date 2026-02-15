@@ -1,0 +1,11 @@
+train:
+  get_spectrogram:
+    _target_: src.transforms.MelSpectrogram
+    config:
+      _target_: src.transforms.MelSpectrogramConfig
+
+inference:
+  get_spectrogram:
+    _target_: src.transforms.MelSpectrogram
+    config:
+      _target_: src.transforms.MelSpectrogramConfig
