@@ -57,7 +57,7 @@ trainer:
   device_tensors: ["spectrogram", "audio"]
   resume_from: null
   device: auto
-  override: False
+  override: true
   monitor: "off"
   save_period: 100
   early_stop: 100
