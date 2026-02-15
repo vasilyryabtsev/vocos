@@ -106,6 +106,7 @@ class RuslanDataset(BaseDataset):
             audio = audio[:, start : start + self.segment_size]
 
         spectrogram = self.get_spectrogram(audio)
+        spectrogram = spectrogram.squeeze(0)
 
         instance_data = {
             "audio": audio,
