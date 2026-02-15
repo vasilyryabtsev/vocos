@@ -10,7 +10,7 @@ pandas
 wandb
 comet_ml
 hydra-core
-
+librosa==0.11.0
 black
 isort
 pre-commit
