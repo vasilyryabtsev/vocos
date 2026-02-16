@@ -84,9 +84,9 @@ class Trainer(BaseTrainer):
             self.log_predictions(**batch)
 
     def log_spectrogram(self, spectrogram, **batch):
-        spectrogram_for_plot = spectrogram[0].detach().cpu()
-        image = plot_spectrogram(spectrogram_for_plot)
-        self.writer.add_image("spectrogram", image)
+        spec_to_plot = spectrogram[0].detach().cpu().numpy()
+        image_array = plot_spectrogram(spec_to_plot)
+        self.writer.add_image("spectrogram", image_array, dataformats='HWC')
 
     def log_predictions(
         self, *args, **kwargs
