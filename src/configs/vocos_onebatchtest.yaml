@@ -1,4 +1,5 @@
 defaults:
+  - melspectrogram: melspectrogram
   - model: vocos
   - writer: cometml
   - metrics: empty_metrics
