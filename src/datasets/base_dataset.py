@@ -21,7 +21,6 @@ class BaseDataset(Dataset):
     def __init__(
         self,
         index,
-        text_encoder=None,
         target_sr=16000,
         limit=None,
         max_audio_length=None,
@@ -34,7 +33,6 @@ class BaseDataset(Dataset):
             index (list[dict]): list, containing dict for each element of
                 the dataset. The dict has required metadata information,
                 such as label and object path.
-            text_encoder (any): text encoder.
             target_sr (int): supported sample rate.
             limit (int | None): if not None, limit the total number of elements
                 in the dataset to 'limit' elements.
@@ -57,7 +55,6 @@ class BaseDataset(Dataset):
 
         self._index: list[dict] = index
 
-        self.text_encoder = text_encoder
         self.target_sr = target_sr
         self.instance_transforms = instance_transforms
 
@@ -151,19 +148,17 @@ class BaseDataset(Dataset):
     @staticmethod
     def _filter_records_from_dataset(
         index: list,
-        max_audio_length,
-        max_text_length,
+        max_audio_length
     ) -> list:
         """
         Filter some of the elements from the dataset depending on
-        the desired max_test_length or max_audio_length.
+        max_audio_length.
 
         Args:
             index (list[dict]): list, containing dict for each element of
                 the dataset. The dict has required metadata information,
                 such as label and object path.
             max_audio_length (int): maximum allowed audio length.
-            max_test_length (int): maximum allowed text length.
         Returns:
             index (list[dict]): list, containing dict for each element of
                 the dataset that satisfied the condition. The dict has
@@ -183,20 +178,7 @@ class BaseDataset(Dataset):
             exceeds_audio_length = False
 
         initial_size = len(index)
-        if max_text_length is not None:
-            exceeds_text_length = (
-                np.array(
-                    [len(CTCTextEncoder.normalize_text(el["text"])) for el in index]
-                )
-                >= max_text_length
-            )
-            _total = exceeds_text_length.sum()
-            logger.info(
-                f"{_total} ({_total / initial_size:.1%}) records are longer then "
-                f"{max_text_length} characters. Excluding them."
-            )
-        else:
-            exceeds_text_length = False
+        exceeds_text_length = False
 
         records_to_filter = exceeds_text_length | exceeds_audio_length
 
