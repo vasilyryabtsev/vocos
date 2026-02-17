@@ -167,7 +167,7 @@ class CometMLWriter:
             step=self.step,
         )
 
-    def add_image(self, image_name, image):
+    def add_image(self, image_name, image, **kwargs):
         """
         Log an image to the experiment tracker.
 
