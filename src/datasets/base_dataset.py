@@ -47,7 +47,7 @@ class BaseDataset(Dataset):
         self._assert_index_is_valid(index)
 
         index = self._filter_records_from_dataset(
-            index, max_audio_length, max_text_length
+            index, max_audio_length
         )
         index = self._shuffle_and_limit_index(index, limit, shuffle_index)
         if not shuffle_index:
@@ -77,7 +77,6 @@ class BaseDataset(Dataset):
         audio_path = data_dict["path"]
         audio = self.load_audio(audio_path)
         text = data_dict["text"]
-        text_encoded = self.text_encoder.encode(text)
 
         spectrogram = self.get_spectrogram(audio)
 
@@ -85,7 +84,6 @@ class BaseDataset(Dataset):
             "audio": audio,
             "spectrogram": spectrogram,
             "text": text,
-            "text_encoded": text_encoded,
             "audio_path": audio_path,
         }
 
