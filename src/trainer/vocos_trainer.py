@@ -170,14 +170,14 @@ class VocosTrainer(Trainer):
     
     def log_spectrogram(self, audio_input, audio_hat, **batch):
         for i in range(audio_input.size(0)):
-            audio_in = audio_input[i].detach().cpu().numpy()
-            audio_out = audio_hat[i].detach().cpu().numpy()
+            audio_in = audio_input[i].detach().cpu()
+            audio_out = audio_hat[i].detach().cpu()
             self._log_spectrogram(audio_in, name=f"input_spectrogram_{i}")
             self._log_spectrogram(audio_out, name=f"output_spectrogram_{i}")
 
     def _log_spectrogram(self, audio, name="spectrogram"):
         spec_to_plot = self.mel_spec(audio)
-        image_array = plot_spectrogram(spec_to_plot)
+        image_array = plot_spectrogram(spec_to_plot.detach().cpu().numpy())
         self.writer.add_image(name, image_array, dataformats='HWC')
 
 
