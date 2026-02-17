@@ -2,9 +2,9 @@ import torch
 import torchaudio
 
 from torch import nn
-from torchaudio.transforms import MelSpectrogram
 from typing import List, Tuple
 
+from src.transforms import MelSpectrogramConfig, MelSpectrogram
 from src.model.utils import safe_log
 
 
@@ -21,17 +21,10 @@ class MelSpecReconstructionLoss(nn.Module):
     """
 
     def __init__(
-        self, sample_rate: int = 24000, n_fft: int = 1024, hop_length: int = 256, n_mels: int = 100,
+        self, config: MelSpectrogramConfig = MelSpectrogramConfig(),
     ):
         super().__init__()
-        self.mel_spec = MelSpectrogram(
-            sample_rate=sample_rate, 
-            n_fft=n_fft, 
-            hop_length=hop_length,
-            n_mels=n_mels, 
-            center=True, 
-            power=1,
-        )
+        self.mel_spec = MelSpectrogram(config=config)
 
     def forward(self, audio_hat, audio_input, **batch):
         """

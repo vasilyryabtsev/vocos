@@ -4,6 +4,7 @@ from src.logger.utils import plot_spectrogram
 from src.loss.vocos_loss import DiscriminatorLoss, GeneratorLoss, FeatureMatchingLoss
 from src.metrics.tracker import MetricTracker
 from src.trainer.trainer import Trainer
+from src.transforms import MelSpectrogram, MelSpectrogramConfig
 
 
 class VocosTrainer(Trainer):
@@ -19,12 +20,14 @@ class VocosTrainer(Trainer):
 
     def __init__(
         self,
+        mel_config: MelSpectrogramConfig = MelSpectrogramConfig(),
         discriminator_mpd=None,
         discriminator_mrd=None,
         optimizer_d=None,
         lr_scheduler_d=None,
         **kwargs,
     ):
+        self.mel_spec = MelSpectrogram(mel_config)
         self.discriminator_mpd = discriminator_mpd
         self.discriminator_mrd = discriminator_mrd
         self.optimizer_d = optimizer_d
@@ -161,24 +164,38 @@ class VocosTrainer(Trainer):
             p.requires_grad = requires_grad
 
     def _log_batch(self, batch_idx, batch, mode="train"):
-        self.log_spectrogram(**batch)
         if mode != "train":
+            self.log_spectrogram(**batch)
             self.log_audio(**batch)
+    
+    def log_spectrogram(self, audio_input, audio_hat, **batch):
+        for i in range(audio_input.size(0)):
+            audio_in = audio_input[i].detach().cpu().numpy()
+            audio_out = audio_hat[i].detach().cpu().numpy()
+            self._log_spectrogram(audio_in, name=f"input_spectrogram_{i}")
+            self._log_spectrogram(audio_out, name=f"output_spectrogram_{i}")
 
-    def log_audio(self, audio_input, audio_hat, **batch):
+    def _log_spectrogram(self, audio, name="spectrogram"):
+        spec_to_plot = self.mel_spec(audio)
+        image_array = plot_spectrogram(spec_to_plot)
+        self.writer.add_image(name, image_array, dataformats='HWC')
+
+
+    def log_audio(self, audio_input, audio_hat, target_sr, **batch):
         """Log input and reconstructed audio."""
-        audio_in = audio_input[0].detach().cpu()
-        audio_out = audio_hat[0].detach().cpu()
-        if audio_in.dim() == 2:
-            audio_in = audio_in.squeeze(0)
-        if audio_out.dim() == 2:
-            audio_out = audio_out.squeeze(0)
-        self.writer.add_audio(
-            "audio_input", audio_in, sample_rate=24000,
-        )
-        self.writer.add_audio(
-            "audio_reconstructed", audio_out, sample_rate=24000,
-        )
+        for i in range(audio_input.size(0)):
+            audio_in = audio_input[i].detach().cpu()
+            audio_out = audio_hat[i].detach().cpu()
+            if audio_in.dim() == 2:
+                audio_in = audio_in.squeeze(0)
+            if audio_out.dim() == 2:
+                audio_out = audio_out.squeeze(0)
+            self.writer.add_audio(
+                f"audio_input_{i}", audio_in, sample_rate=target_sr[0],
+            )
+            self.writer.add_audio(
+                f"audio_reconstructed_{i}", audio_out, sample_rate=target_sr[0],
+            )
 
     def _save_checkpoint(self, epoch, save_best=False, only_best=False):
         arch = type(self.model).__name__

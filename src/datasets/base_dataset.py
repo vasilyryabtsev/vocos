@@ -85,6 +85,7 @@ class BaseDataset(Dataset):
             "spectrogram": spectrogram,
             "text": text,
             "audio_path": audio_path,
+            "target_sr": self.target_sr
         }
 
         # TODO think of how to apply wave augs before calculating spectrogram

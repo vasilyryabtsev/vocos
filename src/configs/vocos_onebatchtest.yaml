@@ -32,10 +32,7 @@ lr_scheduler_d:
 # Loss
 loss_function:
   _target_: src.loss.MelSpecReconstructionLoss
-  sample_rate: 22050
-  n_fft: 1024
-  hop_length: 256
-  n_mels: 80
+  config: ${melspectrogram.melspectrogram}
 
 # Discriminators
 discriminator_mpd:
@@ -49,6 +46,7 @@ discriminator_mrd:
 # Trainer
 trainer:
   trainer_class: VocosTrainer
+  mel_spec: ${melspectrogram.melspectrogram}
   mel_loss_coeff: 45.0
   feat_loss_coeff: 2.0
   log_step: 1

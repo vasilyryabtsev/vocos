@@ -554,3 +554,10 @@ class BaseTrainer:
             self.model.load_state_dict(checkpoint["state_dict"])
         else:
             self.model.load_state_dict(checkpoint)
+    
+    @abstractmethod
+    def process_batch(self, batch, metrics):
+        raise NotImplementedError(
+            "The process_batch method should be implemented in the nested Trainer class."
+        )
+
