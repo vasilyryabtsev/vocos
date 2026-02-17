@@ -181,7 +181,7 @@ class VocosTrainer(Trainer):
         self.writer.add_image(name, image_array, dataformats='HWC')
 
 
-    def log_audio(self, audio_input, audio_hat, target_sr, **batch):
+    def log_audio(self, audio_input, audio_hat, sr, **batch):
         """Log input and reconstructed audio."""
         for i in range(audio_input.size(0)):
             audio_in = audio_input[i].detach().cpu()
@@ -191,10 +191,10 @@ class VocosTrainer(Trainer):
             if audio_out.dim() == 2:
                 audio_out = audio_out.squeeze(0)
             self.writer.add_audio(
-                f"audio_input_{i}", audio_in, sample_rate=target_sr[0],
+                f"audio_input_{i}", audio_in, sample_rate=sr[0],
             )
             self.writer.add_audio(
-                f"audio_reconstructed_{i}", audio_out, sample_rate=target_sr[0],
+                f"audio_reconstructed_{i}", audio_out, sample_rate=sr[0],
             )
 
     def _save_checkpoint(self, epoch, save_best=False, only_best=False):

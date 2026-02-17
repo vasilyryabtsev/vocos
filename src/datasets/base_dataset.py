@@ -75,7 +75,7 @@ class BaseDataset(Dataset):
         """
         data_dict = self._index[ind]
         audio_path = data_dict["path"]
-        audio = self.load_audio(audio_path)
+        audio, sr = self.load_audio(audio_path)
         text = data_dict["text"]
 
         spectrogram = self.get_spectrogram(audio)
@@ -85,7 +85,6 @@ class BaseDataset(Dataset):
             "spectrogram": spectrogram,
             "text": text,
             "audio_path": audio_path,
-            "target_sr": self.target_sr
         }
 
         # TODO think of how to apply wave augs before calculating spectrogram
@@ -107,7 +106,7 @@ class BaseDataset(Dataset):
         target_sr = self.target_sr
         if sr != target_sr:
             audio_tensor = torchaudio.functional.resample(audio_tensor, sr, target_sr)
-        return audio_tensor
+        return audio_tensor, sr
 
     def get_spectrogram(self, audio):
         """

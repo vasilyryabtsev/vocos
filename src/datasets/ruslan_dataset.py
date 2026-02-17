@@ -98,7 +98,7 @@ class RuslanDataset(BaseDataset):
         No text encoding is performed.
         """
         data_dict = self._index[ind]
-        audio = self.load_audio(data_dict["path"])  # (1, T)
+        audio, sr = self.load_audio(data_dict["path"])  # (1, T)
 
         if self.segment_size is not None and audio.size(-1) >= self.segment_size:
             max_start = audio.size(-1) - self.segment_size
@@ -111,6 +111,7 @@ class RuslanDataset(BaseDataset):
         instance_data = {
             "audio": audio,
             "spectrogram": spectrogram,
+            "sr": sr,
         }
 
         instance_data = self.preprocess_data(instance_data)
