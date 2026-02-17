@@ -1,10 +1,9 @@
 train:
   get_spectrogram:
     _target_: src.transforms.MelSpectrogram
-    config: ${melspectrogram.melspectrogram}
+    config: ${melspectrogram}
 
 inference:
   get_spectrogram:
     _target_: src.transforms.MelSpectrogram
-    config:
-      _target_: ${melspectrogram.melspectrogram}
+    config: ${melspectrogram}
