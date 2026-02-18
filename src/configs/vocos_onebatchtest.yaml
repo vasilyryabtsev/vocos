@@ -51,7 +51,7 @@ trainer:
   mel_loss_coeff: 45.0
   feat_loss_coeff: 2.0
   log_step: 1
-  n_epochs: 10
+  n_epochs: 1000000
   epoch_len: 5
   device_tensors: ["spectrogram", "audio"]
   resume_from: null
