@@ -4,7 +4,7 @@ train:
   metadata_path: data/metadata_RUSLAN_22200.csv
   target_sr: 22050
   shuffle_index: false
-  limit: 12
+  limit: 8
   instance_transforms: ${transforms.instance_transforms.train}
 val:
   _target_: src.datasets.RuslanDataset
@@ -12,5 +12,5 @@ val:
   metadata_path: data/metadata_RUSLAN_22200.csv
   target_sr: 22050
   shuffle_index: false
-  limit: 12
+  limit: 8
   instance_transforms: ${transforms.instance_transforms.inference}
