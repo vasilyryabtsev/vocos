@@ -6,7 +6,7 @@ train:
   shuffle_index: false
   segment_size: 16384
   part: train
-  test_size: 20 
+  test_size: 10 
   instance_transforms: ${transforms.instance_transforms.train}
 val:
   _target_: src.datasets.RuslanDataset
@@ -16,5 +16,5 @@ val:
   shuffle_index: false
   segment_size: 16384
   part: test
-  test_size: 20
+  test_size: 10
   instance_transforms: ${transforms.instance_transforms.inference}
