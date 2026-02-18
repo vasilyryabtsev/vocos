@@ -106,6 +106,7 @@ class BaseDataset(Dataset):
         target_sr = self.target_sr
         if sr != target_sr:
             audio_tensor = torchaudio.functional.resample(audio_tensor, sr, target_sr)
+            sr = target_sr
         return audio_tensor, sr
 
     def get_spectrogram(self, audio):
