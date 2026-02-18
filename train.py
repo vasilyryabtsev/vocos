@@ -52,7 +52,9 @@ def main(config):
     # build optimizer, learning rate scheduler
     trainable_params = filter(lambda p: p.requires_grad, model.parameters())
     optimizer = instantiate(config.optimizer, params=trainable_params)
-    lr_scheduler = instantiate(config.lr_scheduler, optimizer=optimizer)
+    lr_scheduler = None
+    if config.lr_scheduler:
+        lr_scheduler = instantiate(config.lr_scheduler, optimizer=optimizer)
 
     # epoch_len = number of iterations for iteration-based training
     # epoch_len = None or len(dataloader) for epoch-based training
@@ -66,7 +68,9 @@ def main(config):
 
     d_params = list(discriminator_mpd.parameters()) + list(discriminator_mrd.parameters())
     optimizer_d = instantiate(config.optimizer_d, params=d_params)
-    lr_scheduler_d = instantiate(config.lr_scheduler_d, optimizer=optimizer_d)
+    lr_scheduler_d = None
+    if config.lr_scheduler_d:
+        lr_scheduler_d = instantiate(config.lr_scheduler_d, optimizer=optimizer_d)
 
     # base trainer kwargs
     trainer_kwargs = dict(
