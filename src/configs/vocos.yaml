@@ -4,7 +4,7 @@ defaults:
   - metrics: empty_metrics
   - datasets: ruslan
   - dataloader: example
-  - transforms.instance_transforms: vocos
+  - transforms: vocos
   - _self_
 
 # Dataloader
