@@ -1,0 +1,14 @@
+defaults:
+  - melspectrogram: melspectrogram
+  - model: vocos
+  - _self_
+
+data_dir: ???
+output_dir: synthesized
+checkpoint_path: ???
+resynthesize: true
+device: auto
+
+mel_transform:
+  _target_: src.transforms.MelSpectrogram
+  config: ${melspectrogram}
