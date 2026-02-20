@@ -1,0 +1,6 @@
+inference:
+  _target_: src.datasets.CustomDirAudioDataset
+  data_dir: ???
+  target_sr: 22050
+  shuffle_index: false
+  instance_transforms: ${transforms.instance_transforms.inference}
