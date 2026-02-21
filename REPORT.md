@@ -272,3 +272,35 @@ https://www.comet.com/vasilyryabtsev/vocos-project/view/new/panels
 На внешних данных, помимо упрощённой локальной структуры частотно-временной шкалы, у сгенерированной спектрограммы возникли проблемы с глобальной структурой: появились более широкие полосы по временной и частотной осям по сравнению с оригинальной спектрограммой.
 
 Голос в аудио стал более роботизированным, слова стало труднее различать (хотя по-прежнему можно без особого труда). Также появилась проблема с тем, что восстановленное аудио не сохраняет фонетические характеристики исходного сигнала (женский голос переходит в мужской). Вероятно, это связано с тем, что модель обучалась на голосе только одного диктора.
+
+### Анализ всей TTS системы
+
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Аудио (оригинал)</th>
+      <th>Аудио (Full TTS with VOCOS)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><audio controls src="test/MOS_full_tts/original/1.wav"></audio> <a href="test/MOS_full_tts/original/1.wav">play</a></td>
+      <td><audio controls src="test/MOS_full_tts/tts_with_vocos/1.wav"></audio> <a href="test/MOS_full_tts/tts_with_vocos/1.wav">play</a></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><audio controls src="test/MOS_full_tts/original/2.wav"></audio> <a href="test/MOS_full_tts/original/2.wav">play</a></td>
+      <td><audio controls src="test/MOS_full_tts/tts_with_vocos/2.wav"></audio> <a href="test/MOS_full_tts/tts_with_vocos/2.wav">play</a></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><audio controls src="test/MOS_full_tts/original/3.wav"></audio> <a href="test/MOS_full_tts/original/3.wav">play</a></td>
+      <td><audio controls src="test/MOS_full_tts/tts_with_vocos/3.wav"></audio> <a href="test/MOS_full_tts/tts_with_vocos/3.wav">play</a></td>
+    </tr>
+  </tbody>
+</table>
+
+Первые два аудио стали длиннее на две секунды, чем оригинальные, в воставленном из текста аудио. Голос стал более роботизированным, некоторые слова стало сложно разобрать. В целом, можно сказать, что качество стало хуже, чем при восстановлении аудио из спектрограммы оригинала.
