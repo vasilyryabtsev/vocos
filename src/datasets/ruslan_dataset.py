@@ -15,15 +15,21 @@ class RuslanDataset(BaseDataset):
     RUSLAN single-speaker Russian TTS dataset.
 
     Metadata format: ``<file_id>|<text>`` per line.
-    Audio files: ``<wav_path>/<file_id>.wav``.
+    Audio files: ``<data_dir>/<wav_subdir>/<file_id>.wav``.
+
+    Expected layout of ``data_dir``::
+
+        data_dir/
+        ├── <subdir>/        # directory with wav files (first subdir found)
+        └── <metadata>.csv   # metadata file (first *.csv found)
 
     Args:
-        wav_path (str): path to directory with wav files.
-        metadata_path (str): path to metadata CSV.
+        data_dir (str): path to directory containing the wav subdirectory
+            and the metadata CSV file.
         part (str | None): dataset partition, e.g "train", "test".
-            If None, the whole dataset will be used. Applies after shuffle and 
+            If None, the whole dataset will be used. Applies after shuffle and
             filter operation. Default is None.
-        test_size (int | float | None): If part is set, this parameter defines the 
+        test_size (int | float | None): If part is set, this parameter defines the
             size of the test set. Default is None.
         segment_size (int | None): if set, crop random segment of this
             length (in samples) from each audio during training.
@@ -32,16 +38,24 @@ class RuslanDataset(BaseDataset):
 
     def __init__(
         self,
-        wav_path,
-        metadata_path,
+        data_dir,
         part=None,
         test_size=None,
         segment_size=None,
         *args,
         **kwargs,
     ):
-        self.wav_path = Path(wav_path)
-        self.metadata_path = Path(metadata_path)
+        data_dir = Path(data_dir)
+
+        csv_files = sorted(data_dir.glob("*.csv"))
+        if not csv_files:
+            raise FileNotFoundError(f"No CSV metadata file found in {data_dir}")
+        self.metadata_path = csv_files[0]
+
+        wav_dirs = sorted(p for p in data_dir.iterdir() if p.is_dir())
+        if not wav_dirs:
+            raise FileNotFoundError(f"No wav subdirectory found in {data_dir}")
+        self.wav_path = wav_dirs[0]
         self.part = part
         self.test_size = test_size
         self.segment_size = segment_size
