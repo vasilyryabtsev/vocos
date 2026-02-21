@@ -1,4 +1,5 @@
 import torch
+import torchaudio
 
 from src.trainer.inferencer import Inferencer
 
@@ -24,15 +25,16 @@ class VocosInferencer(Inferencer):
             for met in self.metrics["inference"]:
                 metrics.update(met.name, met(**batch))
 
-        # Save reconstructed audio (as .pth and .wav)
         if self.save_path is not None:
             audio_hat = batch.get("audio_hat")
             if audio_hat is not None:
+                sr = self.config.melspectrogram.sr
                 for i in range(audio_hat.shape[0]):
-                    audio_hat_i = audio_hat[i].detach().cpu()
-                    torch.save(
-                        {"audio_hat": audio_hat_i},
-                        self.save_path / part / f"output_{batch_idx}_{i}.pth"
+                    audio_hat_i = audio_hat[i].detach().cpu()  # (T,)
+                    torchaudio.save(
+                        str(self.save_path / part / f"output_{batch_idx}_{i}.wav"),
+                        audio_hat_i.unsqueeze(0),  # (1, T)
+                        sample_rate=sr,
                     )
 
         return batch
