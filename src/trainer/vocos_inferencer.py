@@ -1,7 +1,11 @@
+import PIL.Image
 import torch
 import torchaudio
 
+from src.logger.utils import plot_spectrogram
 from src.trainer.inferencer import Inferencer
+from src.transforms import MelSpectrogram
+
 
 class VocosInferencer(Inferencer):
     """
@@ -11,6 +15,10 @@ class VocosInferencer(Inferencer):
     - Logging reconstructed audio and spectrograms
     - Custom process_batch for vocoder outputs
     """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.mel_spec = MelSpectrogram(self.config.melspectrogram)
 
     def process_batch(self, batch_idx, batch, metrics, part):
         batch = self.move_batch_to_device(batch)
@@ -26,16 +34,50 @@ class VocosInferencer(Inferencer):
                 metrics.update(met.name, met(**batch))
 
         if self.save_path is not None:
-            audio_hat = batch.get("audio_hat")
-            if audio_hat is not None:
-                sr = self.config.melspectrogram.sr
-                for i in range(audio_hat.shape[0]):
-                    audio_hat_i = audio_hat[i].detach().cpu()  # (T,)
-                    torchaudio.save(
-                        str(self.save_path / part / f"output_{batch_idx}_{i}.wav"),
-                        audio_hat_i.unsqueeze(0),  # (1, T)
-                        sample_rate=sr,
+            sr = self.config.melspectrogram.sr
+            save_dir = self.save_path / part
+
+            audio_dir = save_dir / "audio"
+            spec_dir = save_dir / "spectrograms"
+            audio_dir.mkdir(exist_ok=True, parents=True)
+            spec_dir.mkdir(exist_ok=True, parents=True)
+
+            audio_hat = batch["audio_hat"]
+            audio_input = batch["audio_input"]
+            spectrogram = batch.get("spectrogram")
+
+            for i in range(audio_hat.shape[0]):
+                stem = f"{batch_idx}_{i}"
+
+                # Save original audio
+                torchaudio.save(
+                    str(audio_dir / f"orig_{stem}.wav"),
+                    audio_input[i].detach().cpu().unsqueeze(0),
+                    sample_rate=sr,
+                )
+
+                # Save generated audio
+                torchaudio.save(
+                    str(audio_dir / f"gen_{stem}.wav"),
+                    audio_hat[i].detach().cpu().unsqueeze(0),
+                    sample_rate=sr,
+                )
+
+                # Save original spectrogram
+                if spectrogram is not None:
+                    spec_np = spectrogram[i].detach().cpu().numpy()
+                    img = plot_spectrogram(spec_np, name="original")
+                    PIL.Image.fromarray(img).save(
+                        str(spec_dir / f"orig_{stem}.png")
                     )
 
+                # Save generated spectrogram
+                mel_hat = self.mel_spec(
+                    audio_hat[i].detach().cpu().unsqueeze(0)
+                )[0]  # (n_mels, T')
+                img_hat = plot_spectrogram(mel_hat.numpy(), name="generated")
+                PIL.Image.fromarray(img_hat).save(
+                    str(spec_dir / f"gen_{stem}.png")
+                )
+
         return batch
-    

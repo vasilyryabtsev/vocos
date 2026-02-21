@@ -15,12 +15,12 @@ class RuslanDataset(BaseDataset):
     RUSLAN single-speaker Russian TTS dataset.
 
     Metadata format: ``<file_id>|<text>`` per line.
-    Audio files: ``<data_dir>/<wav_subdir>/<file_id>.wav``.
+    Audio files: ``<file_id>.wav``.
 
     Expected layout of ``data_dir``::
 
         data_dir/
-        ├── <subdir>/        # directory with wav files (first subdir found)
+        ├── ruslan/RUSLAN    # directory with wav files
         └── <metadata>.csv   # metadata file (first *.csv found)
 
     Args:
@@ -52,10 +52,7 @@ class RuslanDataset(BaseDataset):
             raise FileNotFoundError(f"No CSV metadata file found in {data_dir}")
         self.metadata_path = csv_files[0]
 
-        wav_dirs = sorted(p for p in data_dir.iterdir() if p.is_dir())
-        if not wav_dirs:
-            raise FileNotFoundError(f"No wav subdirectory found in {data_dir}")
-        self.wav_path = wav_dirs[0]
+        self.wav_path = data_dir / "ruslan" / "RUSLAN"
         self.part = part
         self.test_size = test_size
         self.segment_size = segment_size
