@@ -2,7 +2,7 @@ _target_: src.logger.CometMLWriter
 project_name: "vocos_project"
 workspace: null
 run_name: "onebatch_test"
-mode: "online"
+mode: "offline"
 loss_names:
     - loss
     - mel_loss
