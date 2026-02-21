@@ -1,0 +1,7 @@
+inference:
+  _target_: src.datasets.RuslanDataset
+  data_dir: data
+  target_sr: 22050
+  shuffle_index: false
+  limit: 20
+  instance_transforms: ${transforms.instance_transforms.inference}
