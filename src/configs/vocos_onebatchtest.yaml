@@ -63,6 +63,7 @@ trainer:
   device: auto
   override: true
   monitor: "off"
+  save_period: 1
   save_dir: "saved"
   seed: 1
   max_grad_norm: 10.0
