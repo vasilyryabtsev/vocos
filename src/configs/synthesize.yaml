@@ -7,6 +7,7 @@ data_dir: ???
 output_dir: synthesized
 checkpoint_path: ???
 resynthesize: true
+tts_model_id: facebook/mms-tts-rus
 device: auto
 
 mel_transform:
