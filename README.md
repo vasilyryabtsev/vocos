@@ -1,4 +1,4 @@
-# Vocos
+# VOCOS
 
 В данном репозитории реализуется вокодер Vocos (2024). Архитектура модели взята из одноименной статьи [VOCOS: CLOSING THE GAP BETWEEN TIME-DOMAIN
 AND FOURIER-BASED NEURAL VOCODERS FOR HIGH-
