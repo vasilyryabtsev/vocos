@@ -1,79 +1,142 @@
-# Automatic Speech Recognition (ASR) with PyTorch
+# Vocos
 
-<p align="center">
-  <a href="#about">About</a> •
-  <a href="#installation">Installation</a> •
-  <a href="#how-to-use">How To Use</a> •
-  <a href="#credits">Credits</a> •
-  <a href="#license">License</a>
-</p>
+В данном репозитории реализуется вокодер Vocos (2024). Архитектура модели взята из одноименной статьи [VOCOS: CLOSING THE GAP BETWEEN TIME-DOMAIN
+AND FOURIER-BASED NEURAL VOCODERS FOR HIGH-
+QUALITY AUDIO SYNTHESIS](https://arxiv.org/pdf/2306.00814) и оригинальной имплементации статьи https://github.com/gemelo-ai/vocos.
 
-## About
+---
 
-This repository contains a template for solving ASR task with PyTorch. This template branch is a part of the [HSE DLA course](https://github.com/markovka17/dla) ASR homework. Some parts of the code are missing (or do not follow the most optimal design choices...) and students are required to fill these parts themselves (as well as writing their own models, etc.).
+## Установка
 
-See the task assignment [here](https://github.com/markovka17/dla/tree/2024/hw1_asr).
+### Требования
 
-## Installation
+- Python >= 3.12
+- CUDA-совместимый GPU (рекомендуется) или CPU
+- `venv`
 
-Follow these steps to install the project:
-
-0. (Optional) Create and activate new environment using [`conda`](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html) or `venv` ([`+pyenv`](https://github.com/pyenv/pyenv)).
-
-   a. `conda` version:
-
-   ```bash
-   # create env
-   conda create -n project_env python=PYTHON_VERSION
-
-   # activate env
-   conda activate project_env
-   ```
-
-   b. `venv` (`+pyenv`) version:
-
-   ```bash
-   # create env
-   ~/.pyenv/versions/PYTHON_VERSION/bin/python3 -m venv project_env
-
-   # alternatively, using default python version
-   python3 -m venv project_env
-
-   # activate env
-   source project_env/bin/activate
-   ```
-
-1. Install all required packages
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-2. Install `pre-commit`:
-   ```bash
-   pre-commit install
-   ```
-
-## How To Use
-
-To train a model, run the following command:
+### Шаг 1. Клонирование репозитория
 
 ```bash
-python3 train.py -cn=CONFIG_NAME HYDRA_CONFIG_ARGUMENTS
+git clone https://github.com/vasilyryabtsev/vocos
+cd vocos
 ```
 
-Where `CONFIG_NAME` is a config from `src/configs` and `HYDRA_CONFIG_ARGUMENTS` are optional arguments.
-
-To run inference (evaluate the model or save predictions):
+### Шаг 2. Создание виртуального окружения
 
 ```bash
-python3 inference.py HYDRA_CONFIG_ARGUMENTS
+python3 -m venv .venv
 ```
 
-## Credits
+### Шаг 3. Активация окружения
 
-This repository is based on a [PyTorch Project Template](https://github.com/Blinorot/pytorch_project_template).
+```bash
+source .venv/bin/activate
+```
 
-## License
+### Шаг 4. Установка зависимостей
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
+```bash
+pip install -r requirements.txt
+```
+
+> **Примечание для GPU.** В `requirements.txt` уже прописаны CUDA 12.4 пакеты для `torch==2.5.1`. Если у вас другая версия CUDA или вы хотите CPU-only сборку, установите torch вручную перед `pip install -r requirements.txt`:
+> ```bash
+> # CPU only
+> pip install torch==2.5.1 torchaudio==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cpu
+> ```
+
+---
+
+## Обучение
+
+### Подготовка данных
+
+По умолчанию используется датасет RUSLAN. Разместите файлы согласно структуре:
+
+```
+data/
+├── ruslan/
+│   └── RUSLAN/          # wav-файлы
+└── metadata_RUSLAN_22200.csv
+```
+
+Конфигурацию датасета можно переопределить через [src/configs/datasets/](src/configs/datasets/).
+
+### Запуск обучения
+
+**Быстрый тест (один батч):**
+```bash
+python3 train.py -cn=vocos_onebatchtest
+```
+
+**Полное обучение:**
+```bash
+python3 train.py -cn=vocos
+```
+
+**Переопределение параметров конфига:**
+```bash
+python3 train.py -cn=vocos trainer.n_epochs=200 optimizer.lr=1e-4
+```
+
+Чекпоинты сохраняются в `saved/`. Трекинг экспериментов настраивается через [src/configs/writer/](src/configs/writer/) (Comet ML или W&B).
+
+---
+
+## Инференс
+
+### Загрузка предобученных весов
+
+```bash
+python3 run.py
+```
+
+Веса будут скачаны в `pretrained/`. Если файл уже существует, повторная загрузка не производится.
+
+Также можно указать путь вручную:
+```bash
+python3 run.py --checkpoint /path/to/dir
+```
+
+### Запуск инференса
+
+```bash
+python3 inference.py -cn=vocos_inference \
+    inferencer.from_pretrained=pretrained/<checkpoint>.pth \
+    datasets.inference.data_dir=<path/to/audio/dir>
+```
+
+Результаты сохраняются в `data/saved/inference_output/`.
+
+**Параметры:**
+| Параметр | По умолчанию | Описание |
+|---|---|---|
+| `inferencer.from_pretrained` | `null` | Путь к чекпоинту `.pth` |
+| `inferencer.device` | `cpu` | `cpu`, `cuda`, или `auto` |
+| `inferencer.save_path` | `inference_output` | Папка для результатов |
+| `datasets.inference.data_dir` | обязательный | Директория с входными wav-файлами |
+
+---
+
+## Ресинтез аудио
+
+`synthesize.py` принимает директорию с аудиофайлами, прогоняет их через модель (аудио → мел-спектрограмма → аудио) и сохраняет результат.
+
+### Запуск
+
+```bash
+python3 synthesize.py -cn=synthesize \
+    data_dir=<path/to/data> \
+    checkpoint_path=<path/to/checkpoint.pth>
+```
+
+Скрипт ожидает аудиофайлы в поддиректории `audio/` внутри `data_dir` (поддерживаются `.wav`, `.mp3`, `.flac`, `.m4a`). Результаты сохраняются в `synthesized/`.
+
+**Параметры:**
+| Параметр | По умолчанию | Описание |
+|---|---|---|
+| `data_dir` | обязательный | Директория с поддиректорией `audio/` |
+| `checkpoint_path` | обязательный | Путь к чекпоинту `.pth` |
+| `output_dir` | `synthesized` | Папка для сохранения результатов |
+| `device` | `auto` | `cpu`, `cuda`, или `auto` |
+| `resynthesize` | `true` | Запустить ресинтез аудиофайлов |
