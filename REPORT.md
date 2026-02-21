@@ -88,142 +88,142 @@ https://www.comet.com/vasilyryabtsev/vocos-project/view/new/panels
     <tr>
       <td>0</td>
       <td><img src="test/ruslan_inference/inference/spectrograms/orig_0_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/orig_0_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/orig_0_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/orig_0_0.wav">play</a></td>
       <td><img src="test/ruslan_inference/inference/spectrograms/gen_0_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/gen_0_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/gen_0_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/gen_0_0.wav">play</a></td>
     </tr>
     <tr>
       <td>1</td>
       <td><img src="test/ruslan_inference/inference/spectrograms/orig_1_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/orig_1_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/orig_1_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/orig_1_0.wav">play</a></td>
       <td><img src="test/ruslan_inference/inference/spectrograms/gen_1_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/gen_1_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/gen_1_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/gen_1_0.wav">play</a></td>
     </tr>
     <tr>
       <td>2</td>
       <td><img src="test/ruslan_inference/inference/spectrograms/orig_2_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/orig_2_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/orig_2_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/orig_2_0.wav">play</a></td>
       <td><img src="test/ruslan_inference/inference/spectrograms/gen_2_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/gen_2_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/gen_2_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/gen_2_0.wav">play</a></td>
     </tr>
     <tr>
       <td>3</td>
       <td><img src="test/ruslan_inference/inference/spectrograms/orig_3_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/orig_3_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/orig_3_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/orig_3_0.wav">play</a></td>
       <td><img src="test/ruslan_inference/inference/spectrograms/gen_3_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/gen_3_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/gen_3_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/gen_3_0.wav">play</a></td>
     </tr>
     <tr>
       <td>4</td>
       <td><img src="test/ruslan_inference/inference/spectrograms/orig_4_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/orig_4_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/orig_4_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/orig_4_0.wav">play</a></td>
       <td><img src="test/ruslan_inference/inference/spectrograms/gen_4_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/gen_4_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/gen_4_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/gen_4_0.wav">play</a></td>
     </tr>
     <tr>
       <td>5</td>
       <td><img src="test/ruslan_inference/inference/spectrograms/orig_5_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/orig_5_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/orig_5_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/orig_5_0.wav">play</a></td>
       <td><img src="test/ruslan_inference/inference/spectrograms/gen_5_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/gen_5_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/gen_5_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/gen_5_0.wav">play</a></td>
     </tr>
     <tr>
       <td>6</td>
       <td><img src="test/ruslan_inference/inference/spectrograms/orig_6_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/orig_6_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/orig_6_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/orig_6_0.wav">play</a></td>
       <td><img src="test/ruslan_inference/inference/spectrograms/gen_6_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/gen_6_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/gen_6_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/gen_6_0.wav">play</a></td>
     </tr>
     <tr>
       <td>7</td>
       <td><img src="test/ruslan_inference/inference/spectrograms/orig_7_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/orig_7_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/orig_7_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/orig_7_0.wav">play</a></td>
       <td><img src="test/ruslan_inference/inference/spectrograms/gen_7_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/gen_7_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/gen_7_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/gen_7_0.wav">play</a></td>
     </tr>
     <tr>
       <td>8</td>
       <td><img src="test/ruslan_inference/inference/spectrograms/orig_8_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/orig_8_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/orig_8_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/orig_8_0.wav">play</a></td>
       <td><img src="test/ruslan_inference/inference/spectrograms/gen_8_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/gen_8_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/gen_8_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/gen_8_0.wav">play</a></td>
     </tr>
     <tr>
       <td>9</td>
       <td><img src="test/ruslan_inference/inference/spectrograms/orig_9_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/orig_9_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/orig_9_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/orig_9_0.wav">play</a></td>
       <td><img src="test/ruslan_inference/inference/spectrograms/gen_9_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/gen_9_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/gen_9_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/gen_9_0.wav">play</a></td>
     </tr>
     <tr>
       <td>10</td>
       <td><img src="test/ruslan_inference/inference/spectrograms/orig_10_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/orig_10_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/orig_10_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/orig_10_0.wav">play</a></td>
       <td><img src="test/ruslan_inference/inference/spectrograms/gen_10_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/gen_10_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/gen_10_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/gen_10_0.wav">play</a></td>
     </tr>
     <tr>
       <td>11</td>
       <td><img src="test/ruslan_inference/inference/spectrograms/orig_11_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/orig_11_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/orig_11_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/orig_11_0.wav">play</a></td>
       <td><img src="test/ruslan_inference/inference/spectrograms/gen_11_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/gen_11_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/gen_11_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/gen_11_0.wav">play</a></td>
     </tr>
     <tr>
       <td>12</td>
       <td><img src="test/ruslan_inference/inference/spectrograms/orig_12_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/orig_12_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/orig_12_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/orig_12_0.wav">play</a></td>
       <td><img src="test/ruslan_inference/inference/spectrograms/gen_12_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/gen_12_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/gen_12_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/gen_12_0.wav">play</a></td>
     </tr>
     <tr>
       <td>13</td>
       <td><img src="test/ruslan_inference/inference/spectrograms/orig_13_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/orig_13_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/orig_13_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/orig_13_0.wav">play</a></td>
       <td><img src="test/ruslan_inference/inference/spectrograms/gen_13_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/gen_13_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/gen_13_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/gen_13_0.wav">play</a></td>
     </tr>
     <tr>
       <td>14</td>
       <td><img src="test/ruslan_inference/inference/spectrograms/orig_14_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/orig_14_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/orig_14_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/orig_14_0.wav">play</a></td>
       <td><img src="test/ruslan_inference/inference/spectrograms/gen_14_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/gen_14_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/gen_14_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/gen_14_0.wav">play</a></td>
     </tr>
     <tr>
       <td>15</td>
       <td><img src="test/ruslan_inference/inference/spectrograms/orig_15_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/orig_15_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/orig_15_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/orig_15_0.wav">play</a></td>
       <td><img src="test/ruslan_inference/inference/spectrograms/gen_15_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/gen_15_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/gen_15_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/gen_15_0.wav">play</a></td>
     </tr>
     <tr>
       <td>16</td>
       <td><img src="test/ruslan_inference/inference/spectrograms/orig_16_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/orig_16_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/orig_16_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/orig_16_0.wav">play</a></td>
       <td><img src="test/ruslan_inference/inference/spectrograms/gen_16_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/gen_16_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/gen_16_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/gen_16_0.wav">play</a></td>
     </tr>
     <tr>
       <td>17</td>
       <td><img src="test/ruslan_inference/inference/spectrograms/orig_17_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/orig_17_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/orig_17_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/orig_17_0.wav">play</a></td>
       <td><img src="test/ruslan_inference/inference/spectrograms/gen_17_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/gen_17_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/gen_17_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/gen_17_0.wav">play</a></td>
     </tr>
     <tr>
       <td>18</td>
       <td><img src="test/ruslan_inference/inference/spectrograms/orig_18_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/orig_18_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/orig_18_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/orig_18_0.wav">play</a></td>
       <td><img src="test/ruslan_inference/inference/spectrograms/gen_18_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/gen_18_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/gen_18_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/gen_18_0.wav">play</a></td>
     </tr>
     <tr>
       <td>19</td>
       <td><img src="test/ruslan_inference/inference/spectrograms/orig_19_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/orig_19_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/orig_19_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/orig_19_0.wav">play</a></td>
       <td><img src="test/ruslan_inference/inference/spectrograms/gen_19_0.png" width="500"/></td>
-      <td><audio controls src="test/ruslan_inference/inference/audio/gen_19_0.wav"></audio></td>
+      <td><audio controls src="test/ruslan_inference/inference/audio/gen_19_0.wav"></audio> <a href="test/ruslan_inference/inference/audio/gen_19_0.wav">play</a></td>
     </tr>
   </tbody>
 </table>
