@@ -3,6 +3,8 @@ import hydra
 import torch
 
 from hydra.utils import instantiate
+from pathlib import Path
+
 from src.datasets.data_utils import get_dataloaders
 from src.trainer import VocosInferencer
 from src.utils.init_utils import set_random_seed
@@ -44,7 +46,7 @@ def main(config):
         )
 
     # save_path for model predictions
-    save_path = config.inferencer.save_path
+    save_path = Path(config.inferencer.save_path)
     save_path.mkdir(exist_ok=True, parents=True)
 
     inferencer = VocosInferencer(
