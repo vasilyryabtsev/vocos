@@ -19,7 +19,7 @@ QUALITY AUDIO SYNTHESIS](https://arxiv.org/pdf/2306.00814) и оригиналь
 ### Шаг 1. Клонирование репозитория
 
 ```bash
-git clone https://github.com/vasilyryabtsev/vocos
+git clone https://github.com/vasilyryabtsev/vocos.git
 cd vocos
 ```
 
