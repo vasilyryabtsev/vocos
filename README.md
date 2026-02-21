@@ -81,11 +81,12 @@ uv run --python 3.12 python3 inference.py -cn=vocos_inference
 
 ```
 data/
-├── ruslan/                      # директория с wav-файлами
-└── metadata_RUSLAN_22200.csv    # метаданные
+├── ruslan/
+│   └── RUSLAN/                  # директория с wav-файлами
+└── metadata_RUSLAN_22200.csv    # метаданные (первый *.csv в data_dir)
 ```
 
-В конфиге параметр `data_dir` указывает на директорию (`data`). Класс автоматически находит первую поддиректорию (wav-файлы) и первый `*.csv`-файл (метаданные).
+В конфиге параметр `data_dir` указывает на директорию (`data`). Путь к wav-файлам фиксирован: `<data_dir>/ruslan/RUSLAN/`. Первый `*.csv`-файл в `data_dir` используется как метаданные.
 
 Конфигурацию датасета можно переопределить через [src/configs/datasets/](src/configs/datasets/).
 
@@ -133,7 +134,19 @@ python3 inference.py -cn=vocos_inference \
     datasets.inference.data_dir=<path/to/audio/dir>
 ```
 
-Результаты сохраняются в `inference_output/inference`.
+Результаты сохраняются в `inference_output/inference/`:
+
+```
+inference_output/inference/
+├── audio/
+│   ├── orig_0_0.wav   # оригинальное аудио
+│   ├── gen_0_0.wav    # восстановленное аудио
+│   └── ...
+└── spectrograms/
+    ├── orig_0_0.png   # мел-спектрограмма оригинала
+    ├── gen_0_0.png    # мел-спектрограмма восстановленного
+    └── ...
+```
 
 **Параметры:**
 | Параметр | По умолчанию | Описание |
