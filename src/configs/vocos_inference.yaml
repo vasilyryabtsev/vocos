@@ -1,0 +1,21 @@
+defaults:
+  - melspectrogram: melspectrogram
+  - model: vocos
+  - metrics: empty_metrics
+  - datasets: custom_dir
+  - dataloader: example
+  - transforms: vocos
+  - _self_
+
+# Dataloader
+dataloader:
+  batch_size: 1
+  num_workers: 1
+
+# Inferencer
+inferencer:
+  seed: 1
+  device: cpu
+  save_path: "inference_output"
+  from_pretrained: null  # path to checkpoint, e.g. "saved/model_best.pth"
+  device_tensors: ["spectrogram", "audio"]
