@@ -228,7 +228,47 @@ https://www.comet.com/vasilyryabtsev/vocos-project/view/new/panels
   </tbody>
 </table>
 
-Глобальные паттерны по временной и частотно-временной шкале у спектрограмм оригинала и сгенерированного аудио похожи, однако при детальном рассмотрении заметно, что сгенерированное аудио упрощает многие локальные паттерны. Структура оригинальной спектрограммы значительно сложнее сгенерированной.
+Глобальные паттерны по частотно-временной шкале у спектрограмм оригинала и сгенерированного аудио похожи, однако при детальном рассмотрении заметно, что сгенерированное аудио упрощает многие локальные паттерны. Структура оригинальной спектрограммы значительно сложнее сгенерированной.
 
 В сгенерированном аудио текст в большинстве случаев различим с первого раза; присутствует лёгкий эффект роботизированного голоса и эффект "дрожания". Оригинальное аудио можно без труда отличить от сгенерированного.
 
+### Анализ на внешних данных
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Cпектрограмма (оригинал)</th>
+      <th>Аудио (оригинал)</th>
+      <th>Cпектрограмма (сгенерированная)</th>
+      <th>Аудио (сгенерированное)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td><img src="test/MOS_inference/inference/spectrograms/orig_0_0.png" width="500"/></td>
+      <td><audio controls src="test/MOS_inference/inference/audio/orig_0_0.wav"></audio> <a href="test/MOS_inference/inference/audio/orig_0_0.wav">play</a></td>
+      <td><img src="test/MOS_inference/inference/spectrograms/gen_0_0.png" width="500"/></td>
+      <td><audio controls src="test/MOS_inference/inference/audio/gen_0_0.wav"></audio> <a href="test/MOS_inference/inference/audio/gen_0_0.wav">play</a></td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td><img src="test/MOS_inference/inference/spectrograms/orig_1_0.png" width="500"/></td>
+      <td><audio controls src="test/MOS_inference/inference/audio/orig_1_0.wav"></audio> <a href="test/MOS_inference/inference/audio/orig_1_0.wav">play</a></td>
+      <td><img src="test/MOS_inference/inference/spectrograms/gen_1_0.png" width="500"/></td>
+      <td><audio controls src="test/MOS_inference/inference/audio/gen_1_0.wav"></audio> <a href="test/MOS_inference/inference/audio/gen_1_0.wav">play</a></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><img src="test/MOS_inference/inference/spectrograms/orig_2_0.png" width="500"/></td>
+      <td><audio controls src="test/MOS_inference/inference/audio/orig_2_0.wav"></audio> <a href="test/MOS_inference/inference/audio/orig_2_0.wav">play</a></td>
+      <td><img src="test/MOS_inference/inference/spectrograms/gen_2_0.png" width="500"/></td>
+      <td><audio controls src="test/MOS_inference/inference/audio/gen_2_0.wav"></audio> <a href="test/MOS_inference/inference/audio/gen_2_0.wav">play</a></td>
+    </tr>
+  </tbody>
+</table>
+
+На внешних данных, помимо упрощённой локальной структуры частотно-временной шкалы, у сгенерированной спектрограммы возникли проблемы с глобальной структурой: появились более широкие полосы по временной и частотной осям по сравнению с оригинальной спектрограммой.
+
+Голос в аудио стал более роботизированным, слова стало труднее различать (хотя по-прежнему можно без особого труда). Также появилась проблема с тем, что восстановленное аудио не сохраняет фонетические характеристики исходного сигнала (женский голос переходит в мужской). Вероятно, это связано с тем, что модель обучалась на голосе только одного диктора.
