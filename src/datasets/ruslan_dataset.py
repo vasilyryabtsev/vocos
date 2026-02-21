@@ -106,7 +106,6 @@ class RuslanDataset(BaseDataset):
     def __getitem__(self, ind):
         """
         Load audio, compute spectrogram, optionally crop a random segment.
-        No text encoding is performed.
         """
         data_dict = self._index[ind]
         audio, sr = self.load_audio(data_dict["path"])  # (1, T)

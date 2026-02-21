@@ -17,5 +17,5 @@ inferencer:
   seed: 1
   device: cpu
   save_path: "inference_output"
-  from_pretrained: null  # path to checkpoint, e.g. "saved/model_best.pth"
+  from_pretrained: null
   device_tensors: ["spectrogram", "audio"]

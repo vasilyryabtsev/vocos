@@ -61,7 +61,6 @@ trainer:
   feat_loss_coeff: 2.0
   log_step: 50
   n_epochs: 100
-  # epoch_len: 10000  # 100 * 10000 = 1M iters (1M G + 1M D updates)
   device_tensors: ["spectrogram", "audio"]
   resume_from: null
   device: auto
