@@ -73,10 +73,11 @@ uv run --python 3.12 python3 inference.py -cn=vocos_inference
 
 ```
 data/
-├── ruslan/
-│   └── RUSLAN/          # wav-файлы
-└── metadata_RUSLAN_22200.csv
+├── ruslan/                      # директория с wav-файлами
+└── metadata_RUSLAN_22200.csv    # метаданные
 ```
+
+В конфиге параметр `data_dir` указывает на корень этой директории (`data/ruslan`). Класс автоматически находит первую поддиректорию (wav-файлы) и первый `*.csv`-файл (метаданные).
 
 Конфигурацию датасета можно переопределить через [src/configs/datasets/](src/configs/datasets/).
 
