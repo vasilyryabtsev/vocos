@@ -4,6 +4,8 @@
 AND FOURIER-BASED NEURAL VOCODERS FOR HIGH-
 QUALITY AUDIO SYNTHESIS](https://arxiv.org/pdf/2306.00814) и оригинальной имплементации статьи https://github.com/gemelo-ai/vocos.
 
+Подробный отчёт об архитектуре, функции потерь, экспериментах и результатах тестирования: [REPORT.md](REPORT.md).
+
 ---
 
 ## Установка
