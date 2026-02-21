@@ -65,6 +65,14 @@ uv run --python 3.12 python3 inference.py -cn=vocos_inference
 
 ---
 
+## Демонстрация
+
+Протестировать модель можно через ноутбук [vocos_demo.ipynb](vocos_demo.ipynb) — он стабильно запускается на Python 3.12 и покрывает полный цикл: установку зависимостей, обучение (быстрый тест), загрузку предобученных весов, инференс и ресинтез аудио.
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/vasilyryabtsev/vocos/blob/master/vocos_demo.ipynb)
+
+---
+
 ## Обучение
 
 ### Подготовка данных
