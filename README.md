@@ -125,7 +125,7 @@ python3 inference.py -cn=vocos_inference \
     datasets.inference.data_dir=<path/to/audio/dir>
 ```
 
-Результаты сохраняются в `inference_output/`.
+Результаты сохраняются в `inference_output/inference`.
 
 **Параметры:**
 | Параметр | По умолчанию | Описание |
@@ -149,12 +149,12 @@ python3 synthesize.py -cn=synthesize \
     checkpoint_path=<path/to/checkpoint.pth>
 ```
 
-Скрипт ожидает аудиофайлы в поддиректории `audio/` внутри `data_dir` (поддерживаются `.wav`, `.mp3`, `.flac`, `.m4a`). Результаты сохраняются в `synthesized/`.
+Скрипт ожидает аудиофайлы внутри `data_dir` (поддерживаются `.wav`, `.mp3`, `.flac`, `.m4a`). Результаты сохраняются в `synthesized/`.
 
 **Параметры:**
 | Параметр | По умолчанию | Описание |
 |---|---|---|
-| `data_dir` | обязательный | Директория с поддиректорией `audio/` |
+| `data_dir` | обязательный | Директория с аудиофайлами |
 | `checkpoint_path` | обязательный | Путь к чекпоинту `.pth` |
 | `output_dir` | `synthesized` | Папка для сохранения результатов |
 | `device` | `auto` | `cpu`, `cuda`, или `auto` |
