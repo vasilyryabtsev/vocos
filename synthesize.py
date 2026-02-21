@@ -35,7 +35,7 @@ def main(config):
     sr = config.melspectrogram.sr
 
     if config.resynthesize:
-        audio_dir = data_dir / "audio"
+        audio_dir = data_dir
         audio_extensions = {".wav", ".mp3", ".flac", ".m4a"}
         audio_files = sorted(
             p for p in audio_dir.iterdir() if p.suffix.lower() in audio_extensions
