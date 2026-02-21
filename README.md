@@ -10,9 +10,11 @@ QUALITY AUDIO SYNTHESIS](https://arxiv.org/pdf/2306.00814) и оригиналь
 
 ### Требования
 
-- Python >= 3.12
+- Python 3.12
 - CUDA-совместимый GPU (рекомендуется) или CPU
 - `venv`
+
+> **Предупреждение:** Проект стабильно протестирован и запускается на **Python 3.12**. Работа на других версиях не гарантируется.
 
 ### Шаг 1. Клонирование репозитория
 
@@ -45,13 +47,29 @@ pip install -r requirements.txt
 > pip install torch==2.5.1 torchaudio==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cpu
 > ```
 
+### Альтернатива: запуск через uv (рекомендуется)
+
+Если у вас установлен [`uv`](https://github.com/astral-sh/uv), можно не создавать окружение вручную.
+
+**Синхронизация зависимостей с Python 3.12:**
+```bash
+uv sync --python 3.12
+```
+
+**Запуск скриптов:**
+```bash
+uv run --python 3.12 python3 train.py -cn=vocos_onebatchtest
+uv run --python 3.12 python3 train.py -cn=vocos
+uv run --python 3.12 python3 inference.py -cn=vocos_inference
+```
+
 ---
 
 ## Обучение
 
 ### Подготовка данных
 
-По умолчанию используется датасет RUSLAN. Разместите файлы согласно структуре:
+По умолчанию используется датасет [RUSLAN](https://ruslan-corpus.github.io/). Разместите файлы согласно структуре:
 
 ```
 data/
@@ -106,7 +124,7 @@ python3 inference.py -cn=vocos_inference \
     datasets.inference.data_dir=<path/to/audio/dir>
 ```
 
-Результаты сохраняются в `data/saved/inference_output/`.
+Результаты сохраняются в `inference_output/`.
 
 **Параметры:**
 | Параметр | По умолчанию | Описание |
